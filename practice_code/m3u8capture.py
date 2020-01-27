@@ -12,11 +12,10 @@ from imports import m3u8scraper
 #print(viddir)
 
 
-#sitetest = http://95.170.215.120/hls/m3u8/BT-Sport-1HD.m3u8
+#URL = 'http://95.170.215.120/hls/m3u8/BT-Sport-1HD.m3u8'
 
-URL = input ('')
+URL = input ('Enter site: ')
 
-print(type(URL))
 
 StrURL = (", ".join(URL))
 URLlist = list(URL.split(" "))
@@ -26,25 +25,24 @@ print(type(URLlist))
 # =============================================================================
 # Step one check URL, if URL is M3U8 then run capture function, else run scraper
 # =============================================================================
-if type(URLlist) is list:
-    m3u8(URLlist)
+
 
 
 def m3u8(URL):
     if webcheck(URL) == True:
-        print('webcheck, true')
+        print('webcheck, site up')
         StrURL = (", ".join(URL))
         if 'm3u8' in StrURL:
-            print('link contains m3u8','beginning capture')
+            print('link contains m3u8','beginning stream capture')
             single_Capture(StrURL)
         else:
-            print('incorrect link type')
+            print('working site but not .m3u8, running web scraper..')
+            if m3u8scraper(StrURL) == True:
+                print('yes')
+                #Capture(linkset)
 
-def multi ():        
-#m3u8(URL)
-
-
-
+if type(URLlist) is list:
+    m3u8(URLlist)
 
      
 #print(multilinks)
