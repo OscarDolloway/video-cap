@@ -183,4 +183,6 @@ def single_Capture(URL):
     cv2.destroyAllWindows()
     #print(files)
     print (os.path.abspath("Test.mp4"))
+    print(os.path.getsize(viddir))
+    print("Last modified: %s" % time.ctime(os.path.getmtime("Test.mp4")))
     
