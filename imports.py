@@ -138,9 +138,9 @@ def single_Capture(URL):
     print(URL)
     cap = cv2.VideoCapture(URL)
     
-    cmd = [ffprobe] +' -show_format -show_streams -loglevel quiet -print_format json'.split() + [URL]
-    metadata = sp.check_output(cmd).decode('utf-8')
-    print(metadata)
+    #cmd = [ffprobe] +' -show_format -show_streams -loglevel quiet -print_format json'.split() + [URL]
+    #metadata = sp.check_output(cmd).decode('utf-8')
+    #print(metadata)
     
     
     framecount = cap.get(cv2.CAP_PROP_FRAME_COUNT ) 
