@@ -143,7 +143,9 @@ def single_Capture(URL):
     cap = cv2.VideoCapture(URL)
     
     cmd = [ffprobe] +' -show_format -show_streams -loglevel quiet -print_format json'.split() + [URL]
+    print(cmd)
     metadata = sp.check_output(cmd).decode('utf-8')
+    
     print(metadata)
     pipe = sp.Popen([ FFMPEG_BIN, "-i", URL,
                      '-ss', '0', '-t', '120'
