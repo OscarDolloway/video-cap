@@ -34,7 +34,7 @@ viddir = (os.path.dirname(os.path.abspath(sys.argv[0])))#current directory
 print(viddir)
 FFMPEG_BIN = viddir + '/ffmpeglib/bin/ffmpeg'#binary files, allows us to use the module
 ffprobe = viddir + '/ffmpeglib/bin/ffprobe'
-
+print(ffprobe)
 
 linkset =''
 linkset = set()
@@ -60,10 +60,10 @@ user_agent = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 
        'Accept-Language': 'en-US,en;q=0.8',
        'Connection': 'keep-alive'} # for when a site cant be accessed
 
-#URL = ['http://xmtvplayer.com/snippet/sample-m3u-file']
+URL = ['http://xmtvplayer.com/snippet/sample-m3u-file']
 
 #URL = input ('Enter site: ')
-#StrURL = (", ".join(URL))
+StrURL = (", ".join(URL))
 
 
 
@@ -135,26 +135,17 @@ def Capture(URL):
             out.release()
             cv2.destroyAllWindows()
     
-#Capture(m3u8URL)
+Capture(m3u8URL)
 def single_Capture(URL):
     vidname = (str(URL))
-    cap_dur = 10
+    cap_dur = 60# how long we want to capture for in seconds
     print(URL)
     cap = cv2.VideoCapture(URL)
     
     cmd = [ffprobe] +' -show_format -show_streams -loglevel quiet -print_format json'.split() + [URL]
     metadata = sp.check_output(cmd).decode('utf-8')
     print(metadata)
-    pipe = sp.Popen([ FFMPEG_BIN, "-i", URL,
-                     '-ss', '0', '-t', '120'
-            # no text output
-               # disable audio
-           "-f", "image2pipe",
-           "-pix_fmt", "bgr24",
-           "-r",'1',
-           "-vcodec", "rawvideo", "-"],shell=False,
-           stdin = sp.PIPE, stdout = sp.PIPE)
-    
+#        
     framecount = cap.get(cv2.CAP_PROP_FRAME_COUNT ) 
     frames_per_sec = cap.get(cv2.CAP_PROP_FPS)
     
