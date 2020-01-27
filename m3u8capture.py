@@ -38,7 +38,7 @@ def m3u8(URL):
         else:
             print('working site but not .m3u8, running web scraper..')
             if m3u8scraper(StrURL) == True:
-                print('yes')
+                pass
                 #Capture(linkset)
 
 if type(URLlist) is list:

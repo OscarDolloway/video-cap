@@ -28,6 +28,7 @@ from requests.exceptions import HTTPError
 import time
 
 viddir = (os.path.dirname(os.path.abspath(sys.argv[0])))#current directory
+print(viddir)
 FFMPEG_BIN = viddir + '/ffmpeglib/bin/ffmpeg'
 ffprobe = viddir + '/ffmpeglib/bin/ffprobe'
 
@@ -80,11 +81,11 @@ def m3u8scraper(URL):
         print("no m3u8s found")
         return False
     else:
-        print('m3u8s Found;')
+        print('m3u8s Found/n')
         
         #linkset = set(links) # added as a set to remove duplicates
         for i in links:
-            print(i)
+            print(i + '\n')
             linkset.add(i)
         print(linkset)
             #multilinks.append(i)
