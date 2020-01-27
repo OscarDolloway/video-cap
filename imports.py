@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/bin/sh
 # -*- coding: utf-8 -*-
 """
 Created on Sun Jan 26 14:42:08 2020
@@ -15,6 +15,7 @@ from matplotlib.pyplot import figure, imshow, axis
 import cv2
 import sys
 import subprocess as sp
+from subprocess import run
 from threading import Timer
 from urllib.request import urlopen
 from urllib.request import Request
@@ -29,7 +30,7 @@ import time
 
 viddir = (os.path.dirname(os.path.abspath(sys.argv[0])))#current directory
 print(viddir)
-FFMPEG_BIN = viddir + '/ffmpeglib/bin/ffmpeg'
+FFMPEG_BIN = viddir + '/ffmpeglib/bin/ffmpeg'#binary files, allows us to use the module
 ffprobe = viddir + '/ffmpeglib/bin/ffprobe'
 
 
@@ -139,10 +140,18 @@ def single_Capture(URL):
     print(URL)
     cap = cv2.VideoCapture(URL)
     
-    cmd = [ffprobe] +' -show_format -show_streams -loglevel quiet -print_format json'.split() + [URL]
-    metadata = sp.check_output(cmd).decode('utf-8')
-    print(metadata)
-    
+    #cmd = [ffprobe] +' -show_format -show_streams -loglevel quiet -print_format json'.split() + [URL]
+    #metadata = sp.check_output(cmd).decode('utf-8')
+    #print(cmd)
+    pipe = sp.Popen([ FFMPEG_BIN, "-i", URL,
+                     '-ss', '0', '-t', '120'
+            # no text output
+               # disable audio
+           "-f", "image2pipe",
+           "-pix_fmt", "bgr24",
+           "-r",'1',
+           "-vcodec", "rawvideo", "-"],shell=False,
+           stdin = sp.PIPE, stdout = sp.PIPE)
     
     framecount = cap.get(cv2.CAP_PROP_FRAME_COUNT ) 
     frames_per_sec = cap.get(cv2.CAP_PROP_FPS)
