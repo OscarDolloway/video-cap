@@ -31,7 +31,9 @@ from requests.exceptions import HTTPError
 import time
 
 viddir = (os.path.dirname(os.path.abspath(sys.argv[0])))#current directory
-print(viddir)
+
+files = os.listdir(viddir)
+print(files)
 FFMPEG_BIN = viddir + '/ffmpeglib/bin/ffmpeg'#binary files, allows us to use the module
 ffprobe = viddir + '/ffmpeglib/bin/ffprobe'
 
@@ -137,7 +139,7 @@ def Capture(URL):
 #Capture(m3u8URL)
 def single_Capture(URL):
     vidname = (str(URL))
-    cap_dur = 10
+    cap_dur = 60
     print(URL)
     cap = cv2.VideoCapture(URL)
 #    
@@ -172,8 +174,11 @@ def single_Capture(URL):
             frame = cv2.flip(frame,180)# allows us to store the video, without only 1 frames stores
             out.write(cv2.flip(frame, 180))
         else:
+            
             break
+        
     cap.release()
     out.release()
     cv2.destroyAllWindows()
+    print(files)
     

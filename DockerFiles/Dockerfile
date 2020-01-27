@@ -33,5 +33,8 @@ RUN ls -la /video_cap/
 
 #CMD find video_cap -name 'test.mp4'
 CMD python video_cap/m3u8capture.py
-CMD ls -la /video_cap/
+
+
+#CMD ls -la /video_cap/
+
 
