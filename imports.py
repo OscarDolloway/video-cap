@@ -16,6 +16,8 @@ import cv2
 import sys
 import subprocess as sp
 from subprocess import run
+from subprocess import Popen
+from subprocess import check_output
 from threading import Timer
 from urllib.request import urlopen
 from urllib.request import Request
@@ -140,9 +142,9 @@ def single_Capture(URL):
     print(URL)
     cap = cv2.VideoCapture(URL)
     
-    #cmd = [ffprobe] +' -show_format -show_streams -loglevel quiet -print_format json'.split() + [URL]
-    #metadata = sp.check_output(cmd).decode('utf-8')
-    #print(cmd)
+    cmd = [ffprobe] +' -show_format -show_streams -loglevel quiet -print_format json'.split() + [URL]
+    metadata = sp.check_output(cmd)
+    print(metadata)
     pipe = sp.Popen([ FFMPEG_BIN, "-i", URL,
                      '-ss', '0', '-t', '120'
             # no text output
