@@ -32,6 +32,8 @@ print(viddir)
 FFMPEG_BIN = viddir + '/ffmpeglib/bin/ffmpeg'
 ffprobe = viddir + '/ffmpeglib/bin/ffprobe'
 
+print(ffprobe)
+
 linkset =''
 linkset = set()
 
