@@ -167,7 +167,7 @@ def single_Capture(URL):
     fourcc = cv2.VideoWriter_fourcc(*'mp4v')#video type
     
     out = cv2.VideoWriter (('Test.mp4'),fourcc,24,(int(width),int(height)))
-    print os.path.abspath("Test.mp4")
+    print (os.path.abspath("Test.mp4"))
     start_time = time.time()
     while (int(time.time() - start_time)<cap_dur):
         ret, frame = cap.read()
@@ -181,5 +181,6 @@ def single_Capture(URL):
     cap.release()
     out.release()
     cv2.destroyAllWindows()
-    print(files)
+    #print(files)
+    print (os.path.abspath("Test.mp4"))
     
