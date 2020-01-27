@@ -21,10 +21,10 @@ RUN pip install ffmpeg
 #RUN pip install opencv
 RUN pip install opencv-python
 
-#RUN git clone https://github.com/OscarDolloway/video-cap.git video_cap
+RUN git clone https://github.com/OscarDolloway/video-cap.git video_cap
 #COPY /Users/odolloway/Documents/GitHub/video-cap/ video_cap
 
-RUN ls -la /video_cap/ffmpeglib/bin/
+#RUN ls -la /video_cap/ffmpeglib/bin/
 RUN cd video_cap
 
 RUN chmod 644 /video_cap

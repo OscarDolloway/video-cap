@@ -111,8 +111,8 @@ def Capture(URL):
         if (cap.isOpened()==True):
         
             cmd = [ffprobe] +' -show_format -show_streams -loglevel quiet -print_format json'.split() + [URL[urls]]
-            metadata = sp.check_output(cmd).decode('utf-8')
-            print(metadata)
+            #metadata = sp.check_output(cmd).decode('utf-8')
+            #print(metadata)
         
         
             width = cap.get(cv2.CAP_PROP_FRAME_WIDTH)# gets the correct height&width of live vid
