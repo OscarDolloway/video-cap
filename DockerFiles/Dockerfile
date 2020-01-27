@@ -24,11 +24,14 @@ RUN pip install opencv-python
 RUN git clone https://github.com/OscarDolloway/video-cap.git video_cap
 #COPY /Users/odolloway/Documents/GitHub/video-cap/ video_cap
 
-#RUN ls -la /video_cap/ffmpeglib/bin/
+#RUN ls -la /video_cap/
 RUN cd video_cap
 
 RUN chmod 644 /video_cap
+RUN ls -la /video_cap/
+
+
 CMD find video_cap -name 'test.mp4'
 CMD python video_cap/m3u8capture.py
-
+CMD ls -la /video_cap/
 

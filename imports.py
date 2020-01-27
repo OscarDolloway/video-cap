@@ -35,7 +35,6 @@ print(viddir)
 FFMPEG_BIN = viddir + '/ffmpeglib/bin/ffmpeg'#binary files, allows us to use the module
 ffprobe = viddir + '/ffmpeglib/bin/ffprobe'
 
-
 linkset =''
 linkset = set()
 
@@ -110,7 +109,7 @@ def Capture(URL):
         cap = cv2.VideoCapture(URL[urls])
         if (cap.isOpened()==True):
         
-            cmd = [ffprobe] +' -show_format -show_streams -loglevel quiet -print_format json'.split() + [URL[urls]]
+            #cmd = [ffprobe] +' -show_format -show_streams -loglevel quiet -print_format json'.split() + [URL[urls]]
             #metadata = sp.check_output(cmd).decode('utf-8')
             #print(metadata)
         
@@ -141,21 +140,21 @@ def single_Capture(URL):
     cap_dur = 10
     print(URL)
     cap = cv2.VideoCapture(URL)
+#    
+#    cmd = [ffprobe] +' -show_format -show_streams -loglevel quiet -print_format json'.split() + [URL]
+#    print(cmd)
+#    metadata = sp.check_output(cmd).decode('utf-8')
     
-    cmd = [ffprobe] +' -show_format -show_streams -loglevel quiet -print_format json'.split() + [URL]
-    print(cmd)
-    metadata = sp.check_output(cmd).decode('utf-8')
-    
-    print(metadata)
-    pipe = sp.Popen([ FFMPEG_BIN, "-i", URL,
-                     '-ss', '0', '-t', '120'
-            # no text output
-               # disable audio
-           "-f", "image2pipe",
-           "-pix_fmt", "bgr24",
-           "-r",'1',
-           "-vcodec", "rawvideo", "-"],shell=False,
-           stdin = sp.PIPE, stdout = sp.PIPE)
+#    print(metadata)
+#    pipe = sp.Popen([ FFMPEG_BIN, "-i", URL,
+#                     '-ss', '0', '-t', '120'
+#            # no text output
+#               # disable audio
+#           "-f", "image2pipe",
+#           "-pix_fmt", "bgr24",
+#           "-r",'1',
+#           "-vcodec", "rawvideo", "-"],shell=False,
+#           stdin = sp.PIPE, stdout = sp.PIPE)
     
     framecount = cap.get(cv2.CAP_PROP_FRAME_COUNT ) 
     frames_per_sec = cap.get(cv2.CAP_PROP_FPS)
