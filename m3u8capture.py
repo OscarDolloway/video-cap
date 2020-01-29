@@ -9,17 +9,14 @@ Created on Sun Jan 26 14:41:32 2020
 from imports import *
 
 
-#print(viddir)
-
-
 #URL = 'http://95.170.215.120/hls/m3u8/BT-Sport-1HD.m3u8'
-
-URL = input ('Enter site: ')
-
+print('----- Enter site for capture:')
+URL = input ('---- : ')
+print('\n')
 
 #StrURL = (", ".join(URL))
 URLlist = list(URL.split(" "))
-print(type(URLlist))
+#print(type(URLlist))
 
 
 # =============================================================================
@@ -35,13 +32,13 @@ print(type(URLlist))
 
 def m3u8(URL):
     if webcheck(URL) == True:
-        print('webcheck, site up')
+        print('---- Webcheck complete, site is online'+ '\n')
         StrURL = (", ".join(URL))
         if 'm3u8' in StrURL:
             print('link contains m3u8','beginning stream capture')
             single_Capture(StrURL)
         else:
-            print('working site but not .m3u8, running web scraper..')
+            print('---- Does not contain m3u8, running web scraper')
             if m3u8scraper(StrURL) == True:
                 pass
                 #not quite ready

@@ -39,9 +39,13 @@ def Capture(URL):
     #linkset = [linkset]
     cap_dur = 5
     cap_num = 1
-    print(cap_num)
+    #print(cap_num)
     for urls in range(len(URL)):
-        print(URL[urls])
+        print('---- URL: ----')
+        print(URL[urls]+ '\n')
+        
+        print('---- live meta: ----')
+        
         os.system ('ffmpeg -i ' +' '+URL[urls])
         
         cap = cv2.VideoCapture(URL[urls])

@@ -87,14 +87,14 @@ def m3u8scraper(URL):
         print("no m3u8s found")
         return False
     else:
-        print('m3u8s Found/n')
+        print('---- m3u8s Found:'+'\n')
         
         linkset = set(links) # added as a set to remove duplicates
         for i in linkset:
             
-            print('Link Found',i + '\n')
+            print('----- Link',i + '\n')
             
-        print('duplicates removed:')
+        print('----- duplicates removed:')
         print(linkset)
         
             #multilinks.append(i)
@@ -149,8 +149,11 @@ def Capture(URL):
 
 def single_Capture(URL):
     cap_dur = 15#how long we want to capture for#
-    print(URL)
+    print(URL+ '\n')
     cap = cv2.VideoCapture(URL)
+    
+        
+    print('---- live meta: ----')
     os.system ('ffmpeg -i ' +' '+URL)## video meta
     
 #    print(metadata)
@@ -190,6 +193,8 @@ def single_Capture(URL):
     #print(files)
     print (os.path.abspath("Test.mp4"))
     print(os.path.getsize(viddir))
+    
+    print('----- captured video Meta -----')
     print("Last modified: %s" % time.ctime(os.path.getmtime("Test.mp4")))
     os.system ('ffmpeg -i Test.mp4')
     
