@@ -23,10 +23,15 @@ print(type(URLlist))
 
 
 # =============================================================================
-# Step one check URL, if URL is M3U8 then run capture function, else run scraper
+# check URL status
 # =============================================================================
-
-
+# check what URL m3u8 or HTML
+# =============================================================================
+#           if m3u8, attempt a capture
+#       else
+#            attempt a scrape of links from the site
+#scrape the multiple links
+# =============================================================================
 
 def m3u8(URL):
     if webcheck(URL) == True:
@@ -39,8 +44,8 @@ def m3u8(URL):
             print('working site but not .m3u8, running web scraper..')
             if m3u8scraper(StrURL) == True:
                 pass
+                #not quite ready
                 #Capture(linkset)
-
 if type(URLlist) is list:
     m3u8(URLlist)
 

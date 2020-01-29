@@ -68,13 +68,6 @@ user_agent = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 
        'Accept-Language': 'en-US,en;q=0.8',
        'Connection': 'keep-alive'} # for when a site cant be accessed
 
-#URL = ['http://xmtvplayer.com/snippet/sample-m3u-file']
-
-#URL = input ('Enter site: ')
-#StrURL = (", ".join(URL))
-
-
-
 def m3u8scraper(URL):
     req = Request(URL,headers=user_agent)
     site = urlopen(req).read()
@@ -85,9 +78,7 @@ def m3u8scraper(URL):
         sys.exit()
     response = get(URL)
     soup = BeautifulSoup(response.text, 'html.parser')
-    #content =  soup.find_all("p", {"class": "box"},"")
     All = soup.text#All containers from the site
-    #print(type(All))
     links = re.findall("(?P<element>[\w\.\/\-\\:]+\.m3u8)",All)#regex to capture m3u8 links
     if not links:
         print("no m3u8s found")
@@ -97,10 +88,10 @@ def m3u8scraper(URL):
         
         linkset = set(links) # added as a set to remove duplicates
         for i in linkset:
-            print(i + '\n')
             
+            print('Link Found',i + '\n')
             
-            
+        print('duplicates removed:')
         print(linkset)
         
             #multilinks.append(i)
@@ -124,8 +115,6 @@ def Capture(URL):
             #cmd = [ffprobe] +' -show_format -show_streams -loglevel quiet -print_format json'.split() + [URL[urls]]
             #metadata = sp.check_output(cmd).decode('utf-8')
             #print(metadata)
-        
-        
             width = cap.get(cv2.CAP_PROP_FRAME_WIDTH)# gets the correct height&width of live vid
             height = cap.get(cv2.CAP_PROP_FRAME_HEIGHT)
             fourcc = cv2.VideoWriter_fourcc(*'mp4v')#video type
