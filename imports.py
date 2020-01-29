@@ -220,5 +220,7 @@ def single_Capture(URL):
     print (os.path.abspath("Test.mp4"))
     print(os.path.getsize(viddir))
     print("Last modified: %s" % time.ctime(os.path.getmtime("Test.mp4")))
+    os.system ('ffmpeg -i Test.mp4')
+    
 single_Capture(URL)
     
