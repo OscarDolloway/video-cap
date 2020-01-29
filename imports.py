@@ -119,11 +119,14 @@ def m3u8scraper(URL):
     else:
         print('m3u8s Found/n')
         
-        #linkset = set(links) # added as a set to remove duplicates
-        for i in links:
+        linkset = set(links) # added as a set to remove duplicates
+        for i in linkset:
             print(i + '\n')
-            linkset.add(i)
+            print(os.system('ffmpeg -i ' i ))
+            
+            
         print(linkset)
+        
             #multilinks.append(i)
         return True
         
@@ -169,14 +172,13 @@ def Capture(URL):
     
 #Capture(m3u8URL)
 def single_Capture(URL):
-    vidname = (str(URL))
     cap_dur = 60
     print(URL)
     cap = cv2.VideoCapture(URL)
 #    
-    cmd = [ffprobe] +' -show_format -show_streams -loglevel quiet -print_format json'.split() + [URL]
-    print(cmd)
-    metadata = sp.check_output(cmd).decode('utf-8')
+    #cmd = [ffprobe] +' -show_format -show_streams -loglevel quiet -print_format json'.split() + [URL]
+    #metadata = sp.check_output(cmd).decode('utf-8')
+    #print(cmd)
     
 #    print(metadata)
 #    pipe = sp.Popen([ FFMPEG_BIN, "-i", URL,
@@ -216,4 +218,5 @@ def single_Capture(URL):
     print (os.path.abspath("Test.mp4"))
     print(os.path.getsize(viddir))
     print("Last modified: %s" % time.ctime(os.path.getmtime("Test.mp4")))
+
     
