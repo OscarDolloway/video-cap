@@ -31,6 +31,7 @@ from requests.exceptions import HTTPError
 import time
 
 viddir = (os.path.abspath(os.path.dirname(sys.argv[0])))#current directory
+print(viddir)
 
 files = os.listdir(viddir)
 print(files)
