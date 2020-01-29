@@ -44,23 +44,22 @@ workingurl = []
 
 #os.system('ls')
 
-
+##basic site check
 def webcheck(URL):
     for urls in URL:
         try:
             response = requests.get(urls)
             response.raise_for_status()
         except HTTPError as http_err:
-            print(f'HTTP error occurred: {http_err}')  # Python 3.6
+            print(f'HTTP error occurred: {http_err}')
         except Exception as err:
-            print(f'Other error occurred: {err}')  # Python 3.6
+            print(f'Other error occurred: {err}')
         else:
             return True
         
 
 #webcheck(multilinks)   
-#URL = "http://xmtvplayer.com/snippet/sample-m3u-file"
-#import urllib2
+
 user_agent = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11',
        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
        'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3',
@@ -68,6 +67,10 @@ user_agent = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 
        'Accept-Language': 'en-US,en;q=0.8',
        'Connection': 'keep-alive'} # for when a site cant be accessed
 
+
+# =============================================================================
+# webscraper using regex
+# =============================================================================
 def m3u8scraper(URL):
     req = Request(URL,headers=user_agent)
     site = urlopen(req).read()
@@ -98,8 +101,12 @@ def m3u8scraper(URL):
         return True
         
 #m3u8scraper(StrURL)
-m3u8URL = ['http://95.170.215.120/hls/m3u8/BT-Sport-1HD.m3u8','www.bad.cesf',
-           'http://devimages.apple.com/iphone/samples/bipbop/bipbopall.m3u8']
+
+
+
+# =============================================================================
+# Captures multiple links
+# =============================================================================
 def Capture(URL):
     #linkset = [linkset]
     cap_dur = 5
@@ -136,16 +143,15 @@ def Capture(URL):
             cv2.destroyAllWindows()
     
 #Capture(m3u8URL)
-URL = 'http://95.170.215.120/hls/m3u8/BT-Sport-1HD.m3u8'
+#URL = 'http://95.170.215.120/hls/m3u8/BT-Sport-1HD.m3u8'
+            
+            
+
 def single_Capture(URL):
-    cap_dur = 15
+    cap_dur = 15#how long we want to capture for#
     print(URL)
     cap = cv2.VideoCapture(URL)
-#    print(os.system('ffmpeg -i ' i ))
-    os.system ('ffmpeg -i ' +' '+URL)
-    #cmd = [ffprobe] +' -show_format -show_streams -loglevel quiet -print_format json'.split() + [URL]
-    #metadata = sp.check_output(cmd).decode('utf-8')
-    #print(cmd)
+    os.system ('ffmpeg -i ' +' '+URL)## video meta
     
 #    print(metadata)
 #    pipe = sp.Popen([ FFMPEG_BIN, "-i", URL,

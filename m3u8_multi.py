@@ -31,6 +31,10 @@ import time
 viddir = (os.path.abspath(os.path.dirname(sys.argv[0])))#current directory
 URL = ['http://95.170.215.120/hls/m3u8/BT-Sport-1HD.m3u8',
            'http://devimages.apple.com/iphone/samples/bipbop/bipbopall.m3u8']
+
+
+
+
 def Capture(URL):
     #linkset = [linkset]
     cap_dur = 5
@@ -42,10 +46,15 @@ def Capture(URL):
         
         cap = cv2.VideoCapture(URL[urls])
         if (cap.isOpened()==True):
-        
+            
+            
+            #Meta:
             #cmd = [ffprobe] +' -show_format -show_streams -loglevel quiet -print_format json'.split() + [URL[urls]]
             #metadata = sp.check_output(cmd).decode('utf-8')
             #print(metadata)
+            
+            
+            
             width = cap.get(cv2.CAP_PROP_FRAME_WIDTH)# gets the correct height&width of live vid
             height = cap.get(cv2.CAP_PROP_FRAME_HEIGHT)
             fourcc = cv2.VideoWriter_fourcc(*'mp4v')#video type

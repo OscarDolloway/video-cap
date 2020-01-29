@@ -17,7 +17,7 @@ from imports import *
 URL = input ('Enter site: ')
 
 
-StrURL = (", ".join(URL))
+#StrURL = (", ".join(URL))
 URLlist = list(URL.split(" "))
 print(type(URLlist))
 
@@ -49,23 +49,6 @@ def m3u8(URL):
 if type(URLlist) is list:
     m3u8(URLlist)
 
-     
-#print(multilinks)
-#URL = multilinks
-#print(URL)
-        
-
-
-        #for i in linkset:
-          #  print(i)
-        #print(type(linkset))
-        
-
-#print(webcheck(URL))
-
-#m3u8scraper(URL)
-
-#Capture(URL)
 
 
 
