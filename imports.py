@@ -45,33 +45,7 @@ workingurl = []
 #os.system('ls')
 
 
-#URL = input ('Enter site: ')
-
-
-#StrURL = (", ".join(URL))
-#URLlist = list(URL.split(" "))
-#print(type(URLlist))
-
-
-def m3u8(URL):
-    if webcheck(URL) == True:
-        print('webcheck, site up')
-        StrURL = (", ".join(URL))
-        if 'm3u8' in StrURL:
-            print('link contains m3u8','beginning stream capture')
-            single_Capture(StrURL)
-        else:
-            print('working site but not .m3u8, running web scraper..')
-            if m3u8scraper(StrURL) == True:
-                pass
-                #Capture(linkset)
-
-#if type(URLlist) is list:
-#    m3u8(URLlist)
-
-
-
-def webcheck (URL):
+def webcheck(URL):
     for urls in URL:
         try:
             response = requests.get(urls)
@@ -82,6 +56,8 @@ def webcheck (URL):
             print(f'Other error occurred: {err}')  # Python 3.6
         else:
             return True
+        
+
 #webcheck(multilinks)   
 #URL = "http://xmtvplayer.com/snippet/sample-m3u-file"
 #import urllib2
@@ -222,5 +198,5 @@ def single_Capture(URL):
     print("Last modified: %s" % time.ctime(os.path.getmtime("Test.mp4")))
     os.system ('ffmpeg -i Test.mp4')
     
-single_Capture(URL)
+#single_Capture(URL)
     
