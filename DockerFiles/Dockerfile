@@ -17,7 +17,7 @@ RUN pip install matplotlib
 RUN pip install BeautifulSoup4
 RUN pip install requests
 RUN pip install subprocess.run
-RUN pip install ffmpeg
+#RUN pip install ffmpeg
 #RUN pip install opencv
 RUN pip install opencv-python
 

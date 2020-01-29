@@ -8,7 +8,7 @@ Created on Wed Jan 29 11:29:54 2020
 
 
 import os
-
+import sys
 
 
 directory = (os.path.abspath(os.path.dirname(sys.argv[0])))
@@ -25,5 +25,3 @@ os.system(ffmpeg)
 #cmd = [ffmpeg] + '-codecs'
 
 #os.system(ffprobe+'http://www.bokowsky.net/de/knowledge-base/video/hls_bunny/7ea96983ed10dc5546f8275871a38df7_127912_60594786.m3u8')
-
-s
