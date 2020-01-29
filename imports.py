@@ -31,13 +31,11 @@ from requests.exceptions import HTTPError
 import time
 
 viddir = (os.path.abspath(os.path.dirname(sys.argv[0])))#current directory
-print(viddir)
 
 files = os.listdir(viddir)
 print(files)
-FFMPEG_BIN = viddir + '/bin/ffmpeg'#binary files, allows us to use the module
-ffprobe = '/video_cap/ffprobe'
-print(ffprobe)
+FFMPEG_BIN = viddir + '/bin/ffmpeg'#binary files, allows us to use the module on Mac
+ffprobe = '/video_cap/ffprobe'# for mac use only
 linkset =''
 linkset = set()
 workingurl = []
@@ -154,6 +152,7 @@ def single_Capture(URL):
     
         
     print('---- live meta: ----')
+    print('\n')
     os.system ('ffmpeg -i ' +' '+URL)## video meta
     
 #    print(metadata)
@@ -195,6 +194,7 @@ def single_Capture(URL):
     print(os.path.getsize(viddir))
     
     print('----- captured video Meta -----')
+    print('\n')
     print("Last modified: %s" % time.ctime(os.path.getmtime("Test.mp4")))
     os.system ('ffmpeg -i Test.mp4')
     
