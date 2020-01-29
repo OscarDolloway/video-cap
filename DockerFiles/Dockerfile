@@ -32,7 +32,7 @@ RUN ls /video_cap
 
 
 #CMD find video_cap -name 'test.mp4'
-CMD python video_cap/imports.py
+CMD python video_cap/syscommands.py
 
 
 #CMD ls -la /video_cap/
