@@ -26,7 +26,7 @@ RUN apt-get update
 #RUN apt-get install ffmpeg
 RUN apt-get -y install ffmpeg
 
-RUN git clone https://github.com/OscarDolloway/video-cap.git video_cap
+RUN git clone https://github.com/OscarDolloway/video-cap.git video_cap 
 #COPY /Users/odolloway/Documents/GitHub/video-cap/ video_cap
 
 RUN ls -la /video_cap/Test.mp4
