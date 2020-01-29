@@ -27,9 +27,11 @@ os.system('ffmpeg')
 
 os.system('ffprobe')
 
-os.system ('ffmpeg -i'+ URL)
+os.system ('ffmpeg -i ' +' '+URL)
 
-os.system('ffmpeg -i'+StrURL)
+os.system ('ffmpeg -i ' + URL)
+
+#os.system('ffmpeg -i'+StrURL)
 
 #cmd = [ffmpeg] + '-codecs'
 
