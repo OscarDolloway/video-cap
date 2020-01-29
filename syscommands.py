@@ -18,7 +18,7 @@ ffprobe = directory + '/bin/ffprobe'
 command1 = [ffprobe,'http://www.bokowsky.net/de/knowledge-base/video/hls_bunny/7ea96983ed10dc5546f8275871a38df7_127912_60594786.m3u8']
 
 
-os.system(ffmpeg)
+os.system('ffmpeg')
 
 
 

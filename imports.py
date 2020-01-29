@@ -25,7 +25,7 @@ from bs4 import BeautifulSoup
 import requests
 from requests import get
 import re
-import ffmpeg
+#import ffmpeg
 import urllib.request
 from requests.exceptions import HTTPError
 import time
