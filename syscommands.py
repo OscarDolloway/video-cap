@@ -22,7 +22,7 @@ os.system('ffmpeg')
 
 os.system('ffprobe')
 
-os.system ('ffprobe Test.mp4')
+os.system ('ffprobe /video_cap/Test.mp4')
 
 #cmd = [ffmpeg] + '-codecs'
 

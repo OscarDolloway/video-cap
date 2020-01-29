@@ -29,7 +29,7 @@ RUN apt-get -y install ffmpeg
 RUN git clone https://github.com/OscarDolloway/video-cap.git video_cap
 #COPY /Users/odolloway/Documents/GitHub/video-cap/ video_cap
 
-RUN ls -la /video_cap/
+RUN ls -la /video_cap/Test.mp4
 
 RUN chmod 644 /video_cap
 RUN ls -la /video_cap/
