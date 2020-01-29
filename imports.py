@@ -42,15 +42,15 @@ linkset =''
 linkset = set()
 workingurl = []
 
-os.system(ls)
+#os.system('ls')
 
 
-URL = input ('Enter site: ')
+#URL = input ('Enter site: ')
 
 
-StrURL = (", ".join(URL))
-URLlist = list(URL.split(" "))
-print(type(URLlist))
+#StrURL = (", ".join(URL))
+#URLlist = list(URL.split(" "))
+#print(type(URLlist))
 
 
 def m3u8(URL):
@@ -66,8 +66,8 @@ def m3u8(URL):
                 pass
                 #Capture(linkset)
 
-if type(URLlist) is list:
-    m3u8(URLlist)
+#if type(URLlist) is list:
+#    m3u8(URLlist)
 
 
 
@@ -122,7 +122,7 @@ def m3u8scraper(URL):
         linkset = set(links) # added as a set to remove duplicates
         for i in linkset:
             print(i + '\n')
-            print(os.system('ffmpeg -i ' i ))
+            
             
             
         print(linkset)
@@ -171,11 +171,13 @@ def Capture(URL):
             cv2.destroyAllWindows()
     
 #Capture(m3u8URL)
+URL = 'http://95.170.215.120/hls/m3u8/BT-Sport-1HD.m3u8'
 def single_Capture(URL):
-    cap_dur = 60
+    cap_dur = 15
     print(URL)
     cap = cv2.VideoCapture(URL)
-#    
+#    print(os.system('ffmpeg -i ' i ))
+    os.system ('ffmpeg -i ' +' '+URL)
     #cmd = [ffprobe] +' -show_format -show_streams -loglevel quiet -print_format json'.split() + [URL]
     #metadata = sp.check_output(cmd).decode('utf-8')
     #print(cmd)
@@ -218,5 +220,5 @@ def single_Capture(URL):
     print (os.path.abspath("Test.mp4"))
     print(os.path.getsize(viddir))
     print("Last modified: %s" % time.ctime(os.path.getmtime("Test.mp4")))
-
+single_Capture(URL)
     
