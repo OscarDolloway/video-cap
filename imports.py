@@ -36,11 +36,13 @@ print(viddir)
 files = os.listdir(viddir)
 print(files)
 FFMPEG_BIN = viddir + '/bin/ffmpeg'#binary files, allows us to use the module
-ffprobe = viddir + '/bin/ffprobe'
+ffprobe = '/video_cap/ffprobe'
+print(ffprobe)
 linkset =''
 linkset = set()
 workingurl = []
 
+os.system(ls)
 
 
 URL = input ('Enter site: ')
