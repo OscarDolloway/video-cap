@@ -20,7 +20,9 @@ command1 = [ffprobe,'http://www.bokowsky.net/de/knowledge-base/video/hls_bunny/7
 
 os.system('ffmpeg')
 
+os.system('ffprobe')
 
+os.system ('ffprobe Test.mp4')
 
 #cmd = [ffmpeg] + '-codecs'
 
