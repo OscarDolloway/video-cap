@@ -6,8 +6,7 @@ Created on Sun Jan 26 14:41:32 2020
 
 @author: oscardolloway
 """
-from imports import *  
-from imports import m3u8scraper  
+from imports import *    
 
 
 #print(viddir)

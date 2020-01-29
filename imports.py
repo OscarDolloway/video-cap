@@ -6,6 +6,7 @@ Created on Sun Jan 26 14:42:08 2020
 @author: oscardolloway
 """
 
+
 import os
 import numpy as np
 import matplotlib.pyplot as plt
@@ -13,7 +14,6 @@ import sys
 import matplotlib.image as mpimg
 from matplotlib.pyplot import figure, imshow, axis
 import cv2
-import sys
 import subprocess as sp
 from subprocess import run
 from subprocess import Popen
@@ -22,23 +22,51 @@ from threading import Timer
 from urllib.request import urlopen
 from urllib.request import Request
 from bs4 import BeautifulSoup
-from requests import get
-import numpy as np
-import re
 import requests
+from requests import get
+import re
+import ffmpeg
 import urllib.request
 from requests.exceptions import HTTPError
 import time
 
-viddir = (os.path.dirname(os.path.abspath(sys.argv[0])))#current directory
+viddir = (os.path.abspath(os.path.dirname(sys.argv[0])))#current directory
 
 files = os.listdir(viddir)
 print(files)
-FFMPEG_BIN = viddir + '/ffmpeglib/bin/ffmpeg'#binary files, allows us to use the module
-ffprobe = viddir + '/ffmpeglib/bin/ffprobe'
-
+FFMPEG_BIN = viddir + '/bin/ffmpeg'#binary files, allows us to use the module
+ffprobe = viddir + '/bin/ffprobe'
 linkset =''
 linkset = set()
+workingurl = []
+
+
+
+URL = input ('Enter site: ')
+
+
+StrURL = (", ".join(URL))
+URLlist = list(URL.split(" "))
+print(type(URLlist))
+
+
+def m3u8(URL):
+    if webcheck(URL) == True:
+        print('webcheck, site up')
+        StrURL = (", ".join(URL))
+        if 'm3u8' in StrURL:
+            print('link contains m3u8','beginning stream capture')
+            single_Capture(StrURL)
+        else:
+            print('working site but not .m3u8, running web scraper..')
+            if m3u8scraper(StrURL) == True:
+                pass
+                #Capture(linkset)
+
+if type(URLlist) is list:
+    m3u8(URLlist)
+
+
 
 def webcheck (URL):
     for urls in URL:
@@ -143,9 +171,9 @@ def single_Capture(URL):
     print(URL)
     cap = cv2.VideoCapture(URL)
 #    
-#    cmd = [ffprobe] +' -show_format -show_streams -loglevel quiet -print_format json'.split() + [URL]
-#    print(cmd)
-#    metadata = sp.check_output(cmd).decode('utf-8')
+    cmd = [ffprobe] +' -show_format -show_streams -loglevel quiet -print_format json'.split() + [URL]
+    print(cmd)
+    metadata = sp.check_output(cmd).decode('utf-8')
     
 #    print(metadata)
 #    pipe = sp.Popen([ FFMPEG_BIN, "-i", URL,
