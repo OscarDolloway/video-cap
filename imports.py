@@ -14,7 +14,6 @@ import sys
 import matplotlib.image as mpimg
 from matplotlib.pyplot import figure, imshow, axis
 import cv2
-
 import subprocess as sp
 from subprocess import run
 from subprocess import Popen
@@ -25,19 +24,11 @@ from urllib.request import Request
 from bs4 import BeautifulSoup
 import requests
 from requests import get
-
 import re
 #import ffmpeg
 import urllib.request
 from requests.exceptions import HTTPError
 import time
-
-
-viddir = (os.path.dirname(os.path.abspath(sys.argv[0])))#current directory
-print(viddir)
-FFMPEG_BIN = viddir + '/ffmpeglib/bin/ffmpeg'#binary files, allows us to use the module
-ffprobe = viddir + '/ffmpeglib/bin/ffprobe'
-print(ffprobe)
 
 viddir = (os.path.abspath(os.path.dirname(sys.argv[0])))#current directory
 
@@ -74,13 +65,6 @@ user_agent = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 
        'Accept-Language': 'en-US,en;q=0.8',
        'Connection': 'keep-alive'} # for when a site cant be accessed
 
-URL = ['http://xmtvplayer.com/snippet/sample-m3u-file']
-
-#URL = input ('Enter site: ')
-StrURL = (", ".join(URL))
-
-
-
 
 # =============================================================================
 # webscraper using regex
@@ -95,9 +79,7 @@ def m3u8scraper(URL):
         sys.exit()
     response = get(URL)
     soup = BeautifulSoup(response.text, 'html.parser')
-    
     All = soup.text#All containers from the site
-    
     links = re.findall("(?P<element>[\w\.\/\-\\:]+\.m3u8)",All)#regex to capture m3u8 links
     if not links:
         print("no m3u8s found")
@@ -138,7 +120,6 @@ def Capture(URL):
             #cmd = [ffprobe] +' -show_format -show_streams -loglevel quiet -print_format json'.split() + [URL[urls]]
             #metadata = sp.check_output(cmd).decode('utf-8')
             #print(metadata)
-
             width = cap.get(cv2.CAP_PROP_FRAME_WIDTH)# gets the correct height&width of live vid
             height = cap.get(cv2.CAP_PROP_FRAME_HEIGHT)
             fourcc = cv2.VideoWriter_fourcc(*'mp4v')#video type
@@ -159,17 +140,6 @@ def Capture(URL):
             out.release()
             cv2.destroyAllWindows()
     
-Capture(m3u8URL)
-def single_Capture(URL):
-    vidname = (str(URL))
-    cap_dur = 60# how long we want to capture for in seconds
-    print(URL)
-    cap = cv2.VideoCapture(URL)
-    
-    cmd = [ffprobe] +' -show_format -show_streams -loglevel quiet -print_format json'.split() + [URL]
-    metadata = sp.check_output(cmd).decode('utf-8')
-    print(metadata)
-#        
 #Capture(m3u8URL)
 #URL = 'http://95.170.215.120/hls/m3u8/BT-Sport-1HD.m3u8'
             
@@ -229,4 +199,3 @@ def single_Capture(URL):
     os.system ('ffmpeg -i Test.mp4')
     
 #single_Capture(URL)
-    
